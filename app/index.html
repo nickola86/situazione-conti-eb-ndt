@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1">
     <title>Lista Movimenti</title>
     <style>
 	  *{padding:0;border:0;margin:0; font-family:sans-serif}
@@ -26,7 +26,7 @@
 		<ul>
 		<br/>
 		-->
-		<!--<div id="piechart" style="width: 400px; height: 200px;"></div><br/>-->
+		<div id="piechart" style="width: 400px; height: 200px;"></div><br/>
 		<table>
 			<thead>
 				<th>Data</th>
@@ -45,10 +45,11 @@
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script>
 		$(document).ready(function(){		
-			refresh();
+			
 		});
 		function refresh(){
 			$.get("/api/movimenti").then(function(data){
+				var users = [];
 				$("#listMovimenti").html("");
 				var totActive = 0;
 				var totInactive = 0;
@@ -71,11 +72,12 @@
 					$td.text(data[i].utente.nome);
 					$tr.append($td);
 					$("#listMovimenti").append($tr);
+					//Conti
+					if(!users[data[i].idUtente]) users[data[i].idUtente] = data[i].utente;
+					users[data[i].idUtente].totaleUscite = (users[data[i].idUtente].totaleUscite || 0) + data[i].importo;
 				}
-				
-				//drawChart(totActive/1000/60/60,totInactive/1000/60/60);
-				
 				$("#displaydata").show();
+				try{drawChart(users);}catch(e){}
 			});
 		}
 		function utcToLocalDateTime(date){
@@ -151,17 +153,17 @@
 	</script>
 	<script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(refresh);
 
-      function drawChart(lavoro, pausa) {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Ore'],
-          ['Lavoro',     lavoro],
-          ['Pausa',      pausa]
-        ]);
+      function drawChart(users) {
+		if(!users) return;
+	    var datiGrafico = [['Utente', 'Spesa']];
+		datiGrafico = datiGrafico.concat(users.map(e=>{return [e.nome,e.totaleUscite];}));
+		datiGrafico = datiGrafico.filter(Boolean);
+        var data = google.visualization.arrayToDataTable(datiGrafico);
 
         var options = {
-          title: 'Attivita giornaliere'
+          title: 'Ripartizione Spese'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
