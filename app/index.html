@@ -45,7 +45,7 @@
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script>
 		$(document).ready(function(){		
-			
+			refresh();
 		});
 		function refresh(){
 			$.get("/api/movimenti").then(function(data){
