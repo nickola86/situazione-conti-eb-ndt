@@ -56,7 +56,7 @@
 				for(i = 0; i < data.length ; i++){
 					var $tr = $("<tr/>");
 					var $td = $("<td style='white-space:nowrap'/>");
-					$td.text(utcToLocalDate(data[i].data));
+					$td.text(data[i].data);
 					$tr.append($td);
 					$td = $("<td/>");
 					$td.text(data[i].descrizione);
