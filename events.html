@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Controllo timbrature</title>
+    <style>
+	  *{padding:0;border:0;margin:0; font-family:sans-serif}
+	  body{padding:10px;}
+	  td,th{margin:5px;border: 1px solid black;padding: 5px 10px 5px 5px;}
+	  th{background-color:#ffffaa}
+	  select{margin:10px 0px 30px 0px;}
+	  li{padding:left:30px;list-style-type:none}
+	  button,select{font-size:1.2em;padding:10px 20px 10px 20px;border:1px solid #aaa}
+    </style>
+  </head>
+  <body>
+	<select id="listUsers"></select>
+	<button type="button" onclick="refresh()">Aggiorna</button>
+	<div id="displaydata" style="display:none">
+		<b>Eventi del giorno</b><br/>
+		<ul>
+			<li><b style="white-space:nowrap" >Tempo totale di attività : </b> <span style="white-space:nowrap" id="totActive"></span></li>
+			<li><b style="white-space:nowrap" >Tempo totale di inattività : </b> <span style="white-space:nowrap" id="totInactive"></span></li>
+			<li><b style="white-space:nowrap" >Tempo dall'ultimo evento di <span id="lastEventType"></span> : </b> <span style="white-space:nowrap" id="lastEventElapsed"></span></li>
+		<ul>
+		<br/>
+		<div id="piechart" style="width: 400px; height: 200px;"></div>
+		<br/>
+		<table>
+			<thead>
+				<th>Ora</th>
+				<th>Evento</th>
+				<th>Elapsed</th>
+			</thead>
+			<tbody id="listTimbrature">
+				<td></td><td></td><td></td>
+			</tbody>
+		</table>
+	</div>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script>
+		$(document).ready(function(){		
+			$.get("/api/users").then(function(data){
+				for(var i = 0; i < data.length ; i++){
+					var $el = $("<option/>");
+					$el.val(data[i]);
+					$el.text(data[i]);
+					$("#listUsers").append($el);
+				}
+			});
+			$("#listUsers option:first").attr("selected",true);
+			// request permission on page load
+			document.addEventListener('DOMContentLoaded', function () {
+			  if (!Notification) {
+				alert('Notifiche desktop non disponibili'); 
+				return;
+			  }
+			  if (Notification.permission !== "granted")
+				Notification.requestPermission();
+			});
+		});
+		function refresh(){
+			if(!$("#listUsers").val()){
+				alert("Selezionare un utente!");
+			}else{
+				$.get("/api/events/" + $("#listUsers").val()+"/today").then(function(data){
+					$("#listTimbrature").html("");
+					var totActive = 0;
+					var totInactive = 0;
+					var i = 0;
+					for(i = 0; i < data.length ; i++){
+						var $tr = $("<tr/>");
+						var $td = $("<td style='white-space:nowrap'/>");
+						$td.text(utcToLocaltime(data[i].datetime));
+						$tr.append($td);
+						$td = $("<td/>");
+						$td.text(data[i].type);
+						$tr.append($td);
+						$td = $("<td/>");
+						$td.text(elapsedToHHMMSS(data[i].elapsed));
+						$tr.append($td);
+						$("#listTimbrature").append($tr);
+						if(data[i].type=="lock") totActive += data[i].elapsed;
+						if(data[i].type=="unlock") totInactive += data[i].elapsed;
+					}
+					var ore = 0;
+					var minuti = 0;
+					var diff = (new Date()) - (new Date(data[i-1].datetime));
+					if(data[i-1].type=="unlock") totActive += diff;
+					if(data[i-1].type=="lock") totInactive += diff;
+					ore = Math.floor(totActive/1000/60/60);
+					minuti = Math.floor((totActive-ore*60*60*1000)/1000/60);
+					$("#totActive").text(ore + " ore e " + minuti + " minuti");
+					ore = Math.floor(totInactive/1000/60/60);
+					minuti = Math.floor((totInactive-ore*60*60*1000)/1000/60);
+					$("#totInactive").text(ore + " ore e " + minuti + " minuti");
+					$("#lastEventType").text(data[i-1].type);
+					ore = Math.floor(diff/1000/60/60);
+					minuti = Math.floor((diff-ore*60*60*1000)/1000/60);
+					$("#lastEventElapsed").text(ore + " ore e " + minuti + " minuti");
+					
+					drawChart(totActive/1000/60/60,totInactive/1000/60/60);
+					
+					$("#displaydata").show();
+				});
+			}
+		}
+		function utcToLocaltime(date){
+			var d = new Date(date);
+			mm = '' + (d.getMonth() + 1),
+			dd = '' + d.getDate(),
+			yyyy = d.getFullYear();
+			hh24 = '' + d.getHours();
+			mi = '' + d.getMinutes();
+			ss = '' + d.getSeconds();
+			if (mm.length < 2) mm = '0' + mm;
+			if (dd.length < 2) dd = '0' + dd;
+			if (hh24.length < 2) hh24 = '0' + hh24;
+			if (mi.length < 2) mi = '0' + mi;
+			if (ss.length < 2) ss = '0' + ss;
+			return [dd,mm,yyyy].join('/') + " " + [hh24,mi,ss].join(':');
+		}
+		function elapsedToHHMMSS(elapsed){
+			var d = new Date(elapsed);
+			hh24 = '' + (d.getHours()-1);
+			mi = '' + d.getMinutes();
+			ss = '' + d.getSeconds();
+			if (hh24.length < 2) hh24 = '0' + hh24;
+			if (mi.length < 2) mi = '0' + mi;
+			if (ss.length < 2) ss = '0' + ss;
+			return [hh24,mi,ss].join(':');
+		}
+		function notify(message) {
+		  if (Notification.permission !== "granted")
+			Notification.requestPermission().then(function(){notify(message)});
+		  else {
+			var notification = new Notification('Controllo timbrature', {
+			  icon: 'https://cdn.iconscout.com/icon/free/png-64/clock-1960-1119646.png',
+			  body: message
+			});
+
+			notification.onclick = function () {};
+
+		  }
+
+		}
+	</script>
+	<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart(lavoro, pausa) {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Ore'],
+          ['Lavoro',     lavoro],
+          ['Pausa',      pausa]
+        ]);
+
+        var options = {
+          title: 'Attivita giornaliere'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </body>
+</html>
