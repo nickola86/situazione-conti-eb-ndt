@@ -1,79 +1,43 @@
 {
-	"events": [{
-			"user": "nicola.di.trani",
-			"type": "unlock",
-			"datetime": "2019-01-24T08:02:40.272Z",
-			"elapsed": 0
+	"movimenti": [{
+			"id": 1,
+			"data": "01/01/2019",
+			"descrizione": "Spesa",
+			"importo": 50.45,
+			"tipoOperazione": "Uscita",
+			"idPortafoglio": 1,
+			"idUtente": 1
 		}, {
-			"user": "nicola.di.trani",
-			"type": "lock",
-			"datetime": "2019-01-24T10:45:41.348Z",
-			"elapsed": 9781076
+			"id": 2,
+			"data": "01/01/2019",
+			"descrizione": "GPL",
+			"importo": 23.8,
+			"tipoOperazione": "Uscita",
+			"idPortafoglio": 1,
+			"idUtente": 1
+		}
+	],
+	"rimborsi": [{
+			"id": 1,
+			"descrizione": "Farmacia",
+			"importo": 18.2,
+			"idUtenteOrdinante": 1,
+			"idUtenteBeneficiario": 2
+		}
+	],
+	"portafogli": [{
+			"id": 1,
+			"descrizione": "Casa"
+		}
+	],
+	"utenti": [{
+			"id": 1,
+			"nome": "Nicola",
+			"alias": "Nic"
 		}, {
-			"user": "nicola.di.trani",
-			"type": "unlock",
-			"datetime": "2019-01-24T10:49:20.687Z",
-			"elapsed": 219339
-		}, {
-			"user": "nicola.di.trani",
-			"type": "lock",
-			"datetime": "2019-01-24T11:17:20.772Z",
-			"elapsed": 1680085
-		}, {
-			"user": "nicola.di.trani",
-			"type": "unlock",
-			"datetime": "2019-01-24T11:19:13.850Z",
-			"elapsed": 113078
-		}, {
-			"user": "nicola.di.trani",
-			"type": "lock",
-			"datetime": "2019-01-24T11:27:22.693Z",
-			"elapsed": 488843
-		}, {
-			"user": "nicola.di.trani",
-			"type": "unlock",
-			"datetime": "2019-01-24T11:27:29.882Z",
-			"elapsed": 7189
-		}, {
-			"user": "nicola.di.trani",
-			"type": "lock",
-			"datetime": "2019-01-24T11:29:11.042Z",
-			"elapsed": 101160
-		}, {
-			"user": "nicola.di.trani",
-			"type": "unlock",
-			"datetime": "2019-01-24T11:44:14.393Z",
-			"elapsed": 903351
-		}, {
-			"user": "nicola.di.trani",
-			"type": "lock",
-			"datetime": "2019-01-24T12:06:52.891Z",
-			"elapsed": 1358498
-		}, {
-			"user": "nicola.di.trani",
-			"type": "unlock",
-			"datetime": "2019-01-24T13:15:47.042Z",
-			"elapsed": 4134151
-		}, {
-			"user": "nicola.di.trani",
-			"type": "lock",
-			"datetime": "2019-01-24T13:26:00.093Z",
-			"elapsed": 613051
-		}, {
-			"user": "nicola.di.trani",
-			"type": "unlock",
-			"datetime": "2019-01-24T13:31:06.399Z",
-			"elapsed": 306306
-		}, {
-			"user": "nicola.di.trani",
-			"type": "lock",
-			"datetime": "2019-01-24T16:06:15.675Z",
-			"elapsed": 9309276
-		}, {
-			"user": "nicola.di.trani",
-			"type": "unlock",
-			"datetime": "2019-01-24T16:25:05.235Z",
-			"elapsed": 1129560
+			"id": 2,
+			"nome": "Elena",
+			"alias": "Ele"
 		}
 	]
 }

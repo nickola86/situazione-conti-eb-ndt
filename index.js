@@ -34,79 +34,24 @@ app.all('*', function(req, res, next) {
 });
 
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/events.html');
+  res.sendFile(__dirname + '/app/index.html');
 });
-app.get('/api/events', function(req, res){
-  res.send(db.get('events'));
-});
-app.get('/api/events/clean', function(req, res){
-  db.get('events').remove().write();
-  res.send(db.get('events'));
-});
-app.get('/api/events/:user', function(req, res){
-  res.send(db.get('events').filter({user:req.params.user}).sortBy('datetime'));
-});
-app.get('/api/events/:user/today', function(req, res){
-  var events = db.get('events').filter({user:req.params.user}).sortBy('datetime').value();
-  events = events.filter(function(e){
-	  var d1 = new Date(); 
-	  var d2 = new Date(e.datetime); 
-	  return d1.getDate() === d1.getDate() && d1.getMonth() === d2.getMonth() && d1.getFullYear() === d1.getFullYear();
+app.get('/api/movimenti', function(req, res){
+  var movs = db.get('movimenti').value();
+  movs = movs.map(e=>{
+	  e.utente = db.get('utenti').filter({id:e.idUtente}).value()[0];
+	  delete e.userId;
+	  return e;
   });
-  events = events.filter(Boolean);
-  res.send(events);
+  res.send(movs);
 });
-app.post('/api/event/:user/:datetime', function(req, res){
-	console.log("/api/event/"+req.params.user+"/"+req.params.datetime,req.body);
-	var events = db.get('events').find({user:req.params.user,datetime:req.params.datetime}).assign(req.body);
-	db.write();
-	console.log("/api/event/"+req.params.user+"/"+req.params.datetime,events);
-	res.send(events);
+app.get('/api/movimenti/:idUtente', function(req, res){
+  res.send(db.get('movimenti').filter({idUtente:req.params.idUtente}).sortBy('data'));
 });
-app.post('/api/event/:user/:datetime/delete', function(req, res){
-	console.log("/api/event/"+req.params.user+"/"+req.params.datetime+"/delete",req.body);
-	var events = db.get('events').find({user:req.params.user,datetime:req.params.datetime}).remove();
-	db.write();
-	console.log("/api/event/"+req.params.user+"/"+req.params.datetime+"/delete",events);
-	res.send(events);
-});
-app.get('/download', function(req, res){
-  res.sendFile(__dirname + '/dist/timbrature.zip');
-});
-app.get('/api/users', function(req, res){
-  var users = [];
-  db.get('events').value().map(function(e){
-	  if(users.indexOf(e.user)<0) users.push(e.user);
-  });
-  res.send(users);
-});
-
-app.post('/api/event/new', function(req, res){
-  console.log(req.body);
-  var event = req.body;
-  event.datetime = new Date();
-  event.elapsed = 0;
-  //Recupero l'ultimo evento
-  var dbevents = db.get('events').filter({user:event.user}).sortBy('datetime').value();
-  if(dbevents.length>0){
-	  var lastevt = dbevents[dbevents.length-1];
-	  var diff = (new Date(event.datetime)) - (new Date(lastevt.datetime));
-	  if(lastevt.type==event.type){
-		  event.elapsed = lastevt.elapsed + diff;
-		  //Aggiorno l'ultimo evento sul db
-		  db.get('events').find(lastevt).assign({datetime:event.datetime,elapsed:event.elapsed}).write();
-	  }else{
-		  event.elapsed = diff;
-		  //Inserisco il nuovo evento sul db
-		  db.get('events').push(event).write();
-	  }  	  
-  }else{
-	//Inserisco il nuovo evento sul db
-	db.get('events').push(event).write();
-  }
-
-  res.send(db.get('events'));
-});
+app.post('/api/movimenti/new', function(req, res){
+	console.log(req.body);
+	res.send(db.get('movimenti'));
+});	
 
 http.listen(port, function(){
   console.log('listening on *:' + port);

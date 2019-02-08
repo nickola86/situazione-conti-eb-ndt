@@ -14,26 +14,29 @@
     </style>
   </head>
   <body>
-	<select id="listUsers"></select>
-	<button type="button" onclick="refresh()">Aggiorna</button>
+	<!--<select id="listUsers"></select>-->
+	<!--<button type="button" onclick="refresh()">Aggiorna</button>-->
 	<div id="displaydata" style="display:none">
-		<b>Eventi del giorno</b><br/>
+		<b>Lista Movimenti</b><br/>
+		<!-- Totaloni...
 		<ul>
 			<li><b style="white-space:nowrap" >Tempo totale di attività : </b> <span style="white-space:nowrap" id="totActive"></span></li>
 			<li><b style="white-space:nowrap" >Tempo totale di inattività : </b> <span style="white-space:nowrap" id="totInactive"></span></li>
 			<li><b style="white-space:nowrap" >Tempo dall'ultimo evento di <span id="lastEventType"></span> : </b> <span style="white-space:nowrap" id="lastEventElapsed"></span></li>
 		<ul>
 		<br/>
-		<div id="piechart" style="width: 400px; height: 200px;"></div>
-		<br/>
+		-->
+		<!--<div id="piechart" style="width: 400px; height: 200px;"></div><br/>-->
 		<table>
 			<thead>
-				<th>Ora</th>
-				<th>Evento</th>
-				<th>Elapsed</th>
+				<th>Data</th>
+				<th>Descrizione</th>
+				<th>Tipo operazione</th>
+				<th>Importo</th>
+				<th>Utente</th>
 			</thead>
-			<tbody id="listTimbrature">
-				<td></td><td></td><td></td>
+			<tbody id="listMovimenti">
+				<td></td><td></td><td></td><td></td><td></td>
 			</tbody>
 		</table>
 	</div>
@@ -42,72 +45,40 @@
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script>
 		$(document).ready(function(){		
-			$.get("/api/users").then(function(data){
-				for(var i = 0; i < data.length ; i++){
-					var $el = $("<option/>");
-					$el.val(data[i]);
-					$el.text(data[i]);
-					$("#listUsers").append($el);
-				}
-			});
-			$("#listUsers option:first").attr("selected",true);
-			// request permission on page load
-			document.addEventListener('DOMContentLoaded', function () {
-			  if (!Notification) {
-				alert('Notifiche desktop non disponibili'); 
-				return;
-			  }
-			  if (Notification.permission !== "granted")
-				Notification.requestPermission();
-			});
+			refresh();
 		});
 		function refresh(){
-			if(!$("#listUsers").val()){
-				alert("Selezionare un utente!");
-			}else{
-				$.get("/api/events/" + $("#listUsers").val()+"/today").then(function(data){
-					$("#listTimbrature").html("");
-					var totActive = 0;
-					var totInactive = 0;
-					var i = 0;
-					for(i = 0; i < data.length ; i++){
-						var $tr = $("<tr/>");
-						var $td = $("<td style='white-space:nowrap'/>");
-						$td.text(utcToLocaltime(data[i].datetime));
-						$tr.append($td);
-						$td = $("<td/>");
-						$td.text(data[i].type);
-						$tr.append($td);
-						$td = $("<td/>");
-						$td.text(elapsedToHHMMSS(data[i].elapsed));
-						$tr.append($td);
-						$("#listTimbrature").append($tr);
-						if(data[i].type=="lock") totActive += data[i].elapsed;
-						if(data[i].type=="unlock") totInactive += data[i].elapsed;
-					}
-					var ore = 0;
-					var minuti = 0;
-					var diff = (new Date()) - (new Date(data[i-1].datetime));
-					if(data[i-1].type=="unlock") totActive += diff;
-					if(data[i-1].type=="lock") totInactive += diff;
-					ore = Math.floor(totActive/1000/60/60);
-					minuti = Math.floor((totActive-ore*60*60*1000)/1000/60);
-					$("#totActive").text(ore + " ore e " + minuti + " minuti");
-					ore = Math.floor(totInactive/1000/60/60);
-					minuti = Math.floor((totInactive-ore*60*60*1000)/1000/60);
-					$("#totInactive").text(ore + " ore e " + minuti + " minuti");
-					$("#lastEventType").text(data[i-1].type);
-					ore = Math.floor(diff/1000/60/60);
-					minuti = Math.floor((diff-ore*60*60*1000)/1000/60);
-					$("#lastEventElapsed").text(ore + " ore e " + minuti + " minuti");
-					
-					drawChart(totActive/1000/60/60,totInactive/1000/60/60);
-					
-					$("#displaydata").show();
-				});
-			}
+			$.get("/api/movimenti").then(function(data){
+				$("#listMovimenti").html("");
+				var totActive = 0;
+				var totInactive = 0;
+				var i = 0;
+				for(i = 0; i < data.length ; i++){
+					var $tr = $("<tr/>");
+					var $td = $("<td style='white-space:nowrap'/>");
+					$td.text(utcToLocalDate(data[i].data));
+					$tr.append($td);
+					$td = $("<td/>");
+					$td.text(data[i].descrizione);
+					$tr.append($td);
+					$td = $("<td/>");
+					$td.text(data[i].tipoOperazione);
+					$tr.append($td);
+					$td = $("<td/>");
+					$td.text(formatImporto(data[i].importo));
+					$tr.append($td);
+					$td = $("<td/>");
+					$td.text(data[i].utente.nome);
+					$tr.append($td);
+					$("#listMovimenti").append($tr);
+				}
+				
+				//drawChart(totActive/1000/60/60,totInactive/1000/60/60);
+				
+				$("#displaydata").show();
+			});
 		}
-		function utcToLocaltime(date){
+		function utcToLocalDateTime(date){
 			var d = new Date(date);
 			mm = '' + (d.getMonth() + 1),
 			dd = '' + d.getDate(),
@@ -121,6 +92,36 @@
 			if (mi.length < 2) mi = '0' + mi;
 			if (ss.length < 2) ss = '0' + ss;
 			return [dd,mm,yyyy].join('/') + " " + [hh24,mi,ss].join(':');
+		}
+		function utcToLocalTime(date){
+			var d = new Date(date);
+			mm = '' + (d.getMonth() + 1),
+			dd = '' + d.getDate(),
+			yyyy = d.getFullYear();
+			hh24 = '' + d.getHours();
+			mi = '' + d.getMinutes();
+			ss = '' + d.getSeconds();
+			if (mm.length < 2) mm = '0' + mm;
+			if (dd.length < 2) dd = '0' + dd;
+			if (hh24.length < 2) hh24 = '0' + hh24;
+			if (mi.length < 2) mi = '0' + mi;
+			if (ss.length < 2) ss = '0' + ss;
+			return [hh24,mi,ss].join(':');
+		}
+		function utcToLocalDate(date){
+			var d = new Date(date);
+			mm = '' + (d.getMonth() + 1),
+			dd = '' + d.getDate(),
+			yyyy = d.getFullYear();
+			hh24 = '' + d.getHours();
+			mi = '' + d.getMinutes();
+			ss = '' + d.getSeconds();
+			if (mm.length < 2) mm = '0' + mm;
+			if (dd.length < 2) dd = '0' + dd;
+			if (hh24.length < 2) hh24 = '0' + hh24;
+			if (mi.length < 2) mi = '0' + mi;
+			if (ss.length < 2) ss = '0' + ss;
+			return [dd,mm,yyyy].join('/');
 		}
 		function elapsedToHHMMSS(elapsed){
 			var d = new Date(elapsed);
@@ -146,6 +147,7 @@
 		  }
 
 		}
+		function formatImporto(v){return v ? (""+v.toFixed(2)).replace(".",",")+" €" : "0,00 €"}
 	</script>
 	<script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
