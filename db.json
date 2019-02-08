@@ -4,7 +4,7 @@
 			"data": "02/01/2018",
 			"descrizione": "Farmacia fermenti",
 			"importo": 27,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -12,7 +12,7 @@
 			"data": "03/01/2018",
 			"descrizione": "Pizzeria Al Vento",
 			"importo": 32,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -20,7 +20,7 @@
 			"data": "04/01/2018",
 			"descrizione": "Fastweb",
 			"importo": 49.82,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -28,7 +28,7 @@
 			"data": "06/01/2018",
 			"descrizione": "Benzina",
 			"importo": 20,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -36,7 +36,7 @@
 			"data": "06/01/2018",
 			"descrizione": "Affitto Gennaio",
 			"importo": 700,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -44,7 +44,7 @@
 			"data": "06/01/2018",
 			"descrizione": "Spesa Galassia",
 			"importo": 9.88,
-			"tipoOperazione": "EB Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -52,7 +52,7 @@
 			"data": "07/01/2018",
 			"descrizione": "Acqua Borica",
 			"importo": 11.5,
-			"tipoOperazione": "EB Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -60,7 +60,7 @@
 			"data": "08/01/2018",
 			"descrizione": "Maldive - spese Euro",
 			"importo": 85,
-			"tipoOperazione": "EB Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -68,7 +68,7 @@
 			"data": "08/01/2018",
 			"descrizione": "Maldive - spese Dollari (partenza 410, rimanenza 216$ cambio 1.2)",
 			"importo": 180,
-			"tipoOperazione": "EB Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -76,7 +76,7 @@
 			"data": "16/01/2018",
 			"descrizione": "Benzina",
 			"importo": 20,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -84,7 +84,7 @@
 			"data": "16/01/2018",
 			"descrizione": "GPL",
 			"importo": 19.3,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -92,7 +92,7 @@
 			"data": "18/01/2018",
 			"descrizione": "Pizzeria Vecchia Lira - cena sub",
 			"importo": 25,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -100,7 +100,7 @@
 			"data": "20/01/2018",
 			"descrizione": "Spesa Eurospin + latte",
 			"importo": 8.55,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -108,7 +108,7 @@
 			"data": "20/01/2018",
 			"descrizione": "Benzina",
 			"importo": 44.4,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -116,7 +116,7 @@
 			"data": "20/01/2018",
 			"descrizione": "Regalo Natale Liz",
 			"importo": 5.65,
-			"tipoOperazione": "EB Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -124,7 +124,7 @@
 			"data": "20/01/2018",
 			"descrizione": "Regalo ai miei - cioccolatini",
 			"importo": 25.2,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -132,7 +132,7 @@
 			"data": "20/01/2018",
 			"descrizione": "Regali vari",
 			"importo": 29.63,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -140,7 +140,7 @@
 			"data": "21/01/2018",
 			"descrizione": "Aperitivo+pranzo con Liz ed Enrico - S.Giorgio",
 			"importo": 41,
-			"tipoOperazione": "EB Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -148,7 +148,7 @@
 			"data": "24/01/2018",
 			"descrizione": "Spesa Esselunga",
 			"importo": 93.4,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -156,7 +156,7 @@
 			"data": "26/01/2018",
 			"descrizione": "Cinema",
 			"importo": 9.4,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -164,7 +164,7 @@
 			"data": "28/01/2018",
 			"descrizione": "Cena jappo con Daniele e Mirta",
 			"importo": 60,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -172,7 +172,7 @@
 			"data": "28/01/2018",
 			"descrizione": "Dopocena con Daniel e Mirta",
 			"importo": 8,
-			"tipoOperazione": "EB Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -180,7 +180,7 @@
 			"data": "30/01/2018",
 			"descrizione": "Volo Irlanda",
 			"importo": 167.24,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -188,7 +188,7 @@
 			"data": "31/01/2018",
 			"descrizione": "Turistapersempre",
 			"importo": 5,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -196,7 +196,7 @@
 			"data": "01/02/2018",
 			"descrizione": "Pizzeria Al Vento",
 			"importo": 27.5,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -204,7 +204,7 @@
 			"data": "02/02/2018",
 			"descrizione": "Cena Iter con Sissi e Michele",
 			"importo": 27,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -212,7 +212,7 @@
 			"data": "02/02/2018",
 			"descrizione": "Benzina",
 			"importo": 20.02,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -220,7 +220,7 @@
 			"data": "03/02/2018",
 			"descrizione": "Terme Aquaria",
 			"importo": 49.98,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -228,7 +228,7 @@
 			"data": "03/02/2018",
 			"descrizione": "Spesa Simply",
 			"importo": 4.79,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -236,7 +236,7 @@
 			"data": "03/02/2018",
 			"descrizione": "Spesa Cialde",
 			"importo": 13.5,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -244,7 +244,7 @@
 			"data": "03/02/2018",
 			"descrizione": "GPL",
 			"importo": 16.95,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -252,7 +252,7 @@
 			"data": "04/02/2018",
 			"descrizione": "Autolavaggio",
 			"importo": 5,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -260,7 +260,7 @@
 			"data": "05/02/2018",
 			"descrizione": "Affitto Febbraio",
 			"importo": 700,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -268,7 +268,7 @@
 			"data": "06/02/2018",
 			"descrizione": "Lenti a contatto Nick",
 			"importo": 64,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -276,7 +276,7 @@
 			"data": "08/02/2018",
 			"descrizione": "Pizzeria Al Vento",
 			"importo": 24,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -284,7 +284,7 @@
 			"data": "08/02/2018",
 			"descrizione": "Benzina",
 			"importo": 25.02,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -292,7 +292,7 @@
 			"data": "10/02/2018",
 			"descrizione": "Spesa km0",
 			"importo": 17.4,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -300,7 +300,7 @@
 			"data": "10/02/2018",
 			"descrizione": "Spesa Esselunga",
 			"importo": 6.8,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -308,7 +308,7 @@
 			"data": "15/02/2018",
 			"descrizione": "GPL",
 			"importo": 22.6,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -316,7 +316,7 @@
 			"data": "17/02/2018",
 			"descrizione": "Benzina",
 			"importo": 30,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -324,7 +324,7 @@
 			"data": "18/02/2018",
 			"descrizione": "Bolletta luce e gas",
 			"importo": 99.98,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -332,7 +332,7 @@
 			"data": "22/02/2018",
 			"descrizione": "Spesa Esselunga",
 			"importo": 35.2,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -340,7 +340,7 @@
 			"data": "24/02/2018",
 			"descrizione": "Pranzo Clelia",
 			"importo": 5,
-			"tipoOperazione": "EB Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -348,7 +348,7 @@
 			"data": "24/02/2018",
 			"descrizione": "Pranzo Clelia",
 			"importo": 13,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -356,7 +356,7 @@
 			"data": "28/02/2018",
 			"descrizione": "Cestello pentola pressione",
 			"importo": 21.07,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -364,7 +364,7 @@
 			"data": "01/03/2018",
 			"descrizione": "Fastweb",
 			"importo": 49.82,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -372,7 +372,7 @@
 			"data": "02/03/2018",
 			"descrizione": "Cena Iter con Sissi e Michele",
 			"importo": 33,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -380,7 +380,7 @@
 			"data": "02/03/2018",
 			"descrizione": "Benzina",
 			"importo": 57.76,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -388,7 +388,7 @@
 			"data": "02/03/2018",
 			"descrizione": "GPL",
 			"importo": 21,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -396,7 +396,7 @@
 			"data": "03/03/2018",
 			"descrizione": "Pranzo Eudi",
 			"importo": 40,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -404,7 +404,7 @@
 			"data": "03/03/2018",
 			"descrizione": "Parcheggio + benzina Eudi",
 			"importo": 20,
-			"tipoOperazione": "EB Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -412,7 +412,7 @@
 			"data": "03/03/2018",
 			"descrizione": "Spesa Esselunga",
 			"importo": 60.1,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -420,7 +420,7 @@
 			"data": "06/03/2018",
 			"descrizione": "Affitto Marzo",
 			"importo": 700,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -428,7 +428,7 @@
 			"data": "06/03/2018",
 			"descrizione": "Bolletta acqua",
 			"importo": 33.79,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -436,7 +436,7 @@
 			"data": "11/03/2018",
 			"descrizione": "Cena con Controscena",
 			"importo": 37,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -444,7 +444,7 @@
 			"data": "12/03/2018",
 			"descrizione": "Spesa Migross",
 			"importo": 21.39,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -452,7 +452,7 @@
 			"data": "16/03/2018",
 			"descrizione": "Spesa Martinelli",
 			"importo": 61.97,
-			"tipoOperazione": "NdT Buoni",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -460,7 +460,7 @@
 			"data": "18/03/2018",
 			"descrizione": "Regalo Laura",
 			"importo": 39.95,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -468,7 +468,7 @@
 			"data": "18/03/2018",
 			"descrizione": "Cena Indiano con Sara e Mattia",
 			"importo": 48,
-			"tipoOperazione": "EB Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -476,7 +476,7 @@
 			"data": "18/03/2018",
 			"descrizione": "Cena Indiano con Sara e Mattia",
 			"importo": 11,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -484,7 +484,7 @@
 			"data": "19/03/2018",
 			"descrizione": "Concerto Evanescence - benzina",
 			"importo": 14.82,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -492,7 +492,7 @@
 			"data": "19/03/2018",
 			"descrizione": "Concerto Evanescence - cibo",
 			"importo": 20,
-			"tipoOperazione": "EB Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -500,7 +500,7 @@
 			"data": "23/03/2018",
 			"descrizione": "Abbonamento ricarica bombole",
 			"importo": 150,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -508,7 +508,7 @@
 			"data": "23/03/2018",
 			"descrizione": "Cena Spiller",
 			"importo": 35.8,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -516,7 +516,7 @@
 			"data": "24/03/2018",
 			"descrizione": "Spesa Cialde",
 			"importo": 20,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -524,7 +524,7 @@
 			"data": "27/03/2018",
 			"descrizione": "Regalo laurea Dome",
 			"importo": 24,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -532,7 +532,7 @@
 			"data": "28/03/2018",
 			"descrizione": "Spesa Martinelli",
 			"importo": 145.6,
-			"tipoOperazione": "NdT Buoni",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -540,7 +540,7 @@
 			"data": "28/03/2018",
 			"descrizione": "Spesa Martinelli",
 			"importo": 57.23,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -548,7 +548,7 @@
 			"data": "29/03/2018",
 			"descrizione": "Pizzeria Al Vento",
 			"importo": 21,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -556,7 +556,7 @@
 			"data": "30/03/2018",
 			"descrizione": "Benzina",
 			"importo": 20,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -564,7 +564,7 @@
 			"data": "31/03/2018",
 			"descrizione": "Cartucce caraffa",
 			"importo": 27,
-			"tipoOperazione": "NdT Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -572,7 +572,7 @@
 			"data": "02/04/2018",
 			"descrizione": "Affitto Aprile",
 			"importo": 700,
-			"tipoOperazione": "EB Addebito",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}, {
@@ -580,7 +580,7 @@
 			"data": "02/04/2018",
 			"descrizione": "Benzina",
 			"importo": 20,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -588,7 +588,7 @@
 			"data": "02/04/2018",
 			"descrizione": "Riva pargheggio + succo",
 			"importo": 9,
-			"tipoOperazione": "NdT Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 1
 		}, {
@@ -596,7 +596,7 @@
 			"data": "02/04/2018",
 			"descrizione": "Riva pargheggio + succo",
 			"importo": 1,
-			"tipoOperazione": "EB Uscita",
+			"tipoOperazione": "Uscita",
 			"idPortafoglio": 1,
 			"idUtente": 2
 		}
