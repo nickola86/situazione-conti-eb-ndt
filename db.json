@@ -606,43 +606,50 @@
 			"descrizione": "Doposci decathlon",
 			"importo": 25.99,
 			"idUtenteOrdinante": 2,
-			"idUtenteBeneficiario": 1
+			"idUtenteBeneficiario": 1,
+			"data":"01/01/2018"
 		}, {
 			"id": 2,
 			"descrizione": "Prestito",
 			"importo": 10,
 			"idUtenteOrdinante": 2,
-			"idUtenteBeneficiario": 1
+			"idUtenteBeneficiario": 1,
+			"data":"30/01/2018"
 		}, {
 			"id": 3,
 			"descrizione": "Prestito",
 			"importo": 75,
 			"idUtenteOrdinante": 2,
-			"idUtenteBeneficiario": 1
+			"idUtenteBeneficiario": 1,
+			"data":"20/02/2018"
 		}, {
 			"id": 4,
 			"descrizione": "Prestito",
 			"importo": 10,
 			"idUtenteOrdinante": 1,
-			"idUtenteBeneficiario": 2
+			"idUtenteBeneficiario": 2,
+			"data":"10/03/2018"
 		}, {
 			"id": 5,
 			"descrizione": "Prestito",
 			"importo": 40,
 			"idUtenteOrdinante": 2,
-			"idUtenteBeneficiario": 1
+			"idUtenteBeneficiario": 1,
+			"data":"01/04/2018"
 		}, {
 			"id": 6,
 			"descrizione": "Prestito",
 			"importo": 10,
 			"idUtenteOrdinante": 2,
-			"idUtenteBeneficiario": 1
+			"idUtenteBeneficiario": 1,
+			"data":"02/04/2018"
 		}, {
 			"id": 7,
 			"descrizione": "Batteria torcia sub",
 			"importo": 14.3,
 			"idUtenteOrdinante": 1,
-			"idUtenteBeneficiario": 2
+			"idUtenteBeneficiario": 2,
+			"data":"06/04/2018"
 		}
 	],
 	"portafogli": [{

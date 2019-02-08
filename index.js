@@ -5,6 +5,7 @@ var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
 
 var movimenti = require('./services/movimenti');
+var rimborsi = require('./services/rimborsi');
 
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -24,6 +25,9 @@ app.get('/', function(req, res){
 
 app.get('/api/movimenti', async function(req, res){
   res.send(await movimenti.all());
+});
+app.get('/api/rimborsi', async function(req, res){
+  res.send(await rimborsi.all());
 });
 
 http.listen(port, function(){
