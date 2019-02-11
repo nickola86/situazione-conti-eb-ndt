@@ -2,7 +2,7 @@ var Movimenti = function () {};
 var db = require("./database");
 
 Movimenti.prototype.all = async function () {
-  var movs = db.get('movimenti').value();
+  var movs = db.get('movimenti').sortBy('date').value();
   var cacheUtenti = [];
   var cachePortafogli = [];
   //Join Utenti
@@ -31,11 +31,24 @@ Movimenti.prototype.all = async function () {
 	  return e;
   });
   delete cachePortafogli;
-  return movs;
+  return movs.reverse();
 };
 
 Movimenti.prototype.create = async function (mov) {
-  console.log(mov);
+  var len = db.get('movimenti').size();
+  var newId = (db.get('movimenti').sortBy('id').value()[len-1] || {id:0}).id + 1;
+  mov.id = newId;
+  mov.importo = parseFloat(mov.importo);
+  if(!mov.tipoOperazione) mov.tipoOperazione = 'Uscita';
+  
+  //Join Utenti
+  mov.idUtente = parseInt(mov.idUtente);
+  mov.utente = db.get('utenti').filter({id:mov.idUtente}).value()[0];  
+  //Join Portafogli
+  mov.idPortafoglio = parseInt(mov.idPortafoglio);
+  mov.portafoglio = db.get('portafogli').filter({id:mov.idPortafoglio}).value()[0];
+  
+  db.get('movimenti').push(mov).write();  
   return this.all();
 };
 

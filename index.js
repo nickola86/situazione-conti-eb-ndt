@@ -28,7 +28,7 @@ app.use(express.static('app'));
 app.get('/api/movimenti', async function(req, res){
   res.send(await movimenti.all());
 });
-app.post('/api/movimenti/new', async function(req, res){
+app.post('/api/movimenti/create', async function(req, res){
   res.send(await movimenti.create(req.body));
 });
 app.get('/api/rimborsi', async function(req, res){

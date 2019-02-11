@@ -129,7 +129,7 @@
 			for(i = 0; i < data.length ; i++){
 				var $tr = $("<tr/>");
 				var $td = $("<td style='white-space:nowrap'/>");
-				$td.text(data[i].data);
+				$td.text(utcToLocalDate(data[i].data));
 				$tr.append($td);
 				$td = $("<td/>");
 				$td.text(data[i].descrizione);
@@ -138,7 +138,8 @@
 				$td.text(data[i].tipoOperazione);
 				$tr.append($td);
 				$td = $("<td/>");
-				$td.text(formatImporto(data[i].importo));
+				$td.text(formatImporto(data[i].importo,data[i].valuta));
+				$td.attr("style","text-align:right");
 				$tr.append($td);
 				$td = $("<td/>");
 				$td.text(data[i].utente.nome);
@@ -166,7 +167,7 @@
 					$td.text(data[i].descrizione);
 					$tr.append($td);
 					$td = $("<td/>");
-					$td.text(formatImporto(data[i].importo));
+					$td.text(formatImporto(data[i].importo,data[i].valuta));
 					$tr.append($td);
 					$td = $("<td/>");
 					$td.text(data[i].utenteBeneficiario.nome + " deve rendere a " + data[i].utenteOrdinante.nome);
@@ -177,7 +178,7 @@
 			});
 		}
 		function utcToLocalDateTime(date){
-			var d = new Date(date);
+			var d = date ? new Date(date) : new Date();
 			mm = '' + (d.getMonth() + 1),
 			dd = '' + d.getDate(),
 			yyyy = d.getFullYear();
@@ -192,7 +193,7 @@
 			return [dd,mm,yyyy].join('/') + " " + [hh24,mi,ss].join(':');
 		}
 		function utcToLocalTime(date){
-			var d = new Date(date);
+			var d = date ? new Date(date) : new Date();
 			mm = '' + (d.getMonth() + 1),
 			dd = '' + d.getDate(),
 			yyyy = d.getFullYear();
@@ -207,7 +208,7 @@
 			return [hh24,mi,ss].join(':');
 		}
 		function utcToLocalDate(date){
-			var d = new Date(date);
+			var d = date ? new Date(date) : new Date();
 			mm = '' + (d.getMonth() + 1),
 			dd = '' + d.getDate(),
 			yyyy = d.getFullYear();
@@ -243,9 +244,8 @@
 			notification.onclick = function () {};
 
 		  }
-
 		}
-		function formatImporto(v){return v ? (""+v.toFixed(2)).replace(".",",")+" €" : "0,00 €"}
+		function formatImporto(v,d){return v ? (""+v.toFixed(2)).replace(".",",")+" "+(d || "€") : "0,00 "+(d || "€")}
 	</script>
 	<script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
@@ -276,12 +276,17 @@
 			document.getElementById("transcript").value=parsed.error;
 			document.getElementById("transcript").setAttribute("class","error");
 		}else{
+			
 			document.getElementById("transcript").removeAttribute("class");
 			document.getElementById("transcript").value=speechToText;
+			
 			if(!parsed.data) parsed.data = new Date();
+			
 			if(!parsed.idPortafoglio) parsed.idPortafoglio = getCurrentPortafoglio();
+			
 			if(!parsed.idUtente) parsed.idUtente = getCurrentUtente();
-			$.post("/api/movimenti/new",parsed).then(refreshMovimentiCallback);
+			
+			$.postJSON("/api/movimenti/create",parsed).then(refreshMovimentiCallback);
 		}
 	  }
 	  
@@ -315,7 +320,8 @@
 		var utenti = [];
 		//Scorro i movimenti
 		for(var i = 0; i<movimenti.length; i++){
-			var j = parseInt(movimenti[i].data.substring(3,5));
+			var pData = utcToLocalDate(movimenti[i].data);
+			var j = parseInt(pData.substring(3,5));
 			datiGrafico[j][1] = (datiGrafico[j][1] || 0) + movimenti[i].importo;			
 			var k = utenti[movimenti[i].idUtente] || 1+utenti.filter(Boolean).length;
 			utenti[movimenti[i].idUtente] = k;
@@ -380,9 +386,9 @@
 			if(!errMsg && i_descrizione<0) errMsg += "ParseException: descrizione non presente\n";
 			
 			//recupero i valori in funzione degli indici
-			var data = s.slice(i_data+1,i_importo)
-			var importo = s.slice(i_importo+1,i_descrizione)
-			var descrizione = s.slice(i_descrizione+1,s.length)
+			var data = s.slice(i_data+1,i_importo);
+			var importo = s.slice(i_importo+1,i_descrizione);
+			var descrizione = s.slice(i_descrizione+1,s.length);
 
 			//Inizio le validazioni secondarie
 			if(!errMsg && data.length!= 0 && data.length!= 3) errMsg += "ParseException: data deve essere un array di 3 elementi\n";
@@ -425,6 +431,22 @@
 				return {"data":pData,"importo":pImporto,"valuta":"€","descrizione":pDescrizione};
 			}	
 		}
+		jQuery["postJSON"] = function( url, data, callback ) {
+			// shift arguments if data argument was omitted
+			if ( jQuery.isFunction( data ) ) {
+				callback = data;
+				data = undefined;
+			}
+
+			return jQuery.ajax({
+				url: url,
+				type: "POST",
+				contentType:"application/json; charset=utf-8",
+				dataType: "json",
+				data: JSON.stringify(data),
+				success: callback
+			});
+		};
     </script>
   </body>
 </html>
