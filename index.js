@@ -1,4 +1,5 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
 var bodyParser = require('body-parser');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -22,9 +23,13 @@ app.all('*', function(req, res, next) {
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/app/index.html');
 });
+app.use(express.static('app'));
 
 app.get('/api/movimenti', async function(req, res){
   res.send(await movimenti.all());
+});
+app.post('/api/movimenti/new', async function(req, res){
+  res.send(await movimenti.create(req.body));
 });
 app.get('/api/rimborsi', async function(req, res){
   res.send(await rimborsi.all());

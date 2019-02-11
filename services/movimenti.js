@@ -34,4 +34,9 @@ Movimenti.prototype.all = async function () {
   return movs;
 };
 
+Movimenti.prototype.create = async function (mov) {
+  console.log(mov);
+  return this.all();
+};
+
 module.exports = new Movimenti();
