@@ -177,6 +177,9 @@
 				$td.text(data[i].utente.nome);
 				$tr.append($td);
 				$td = $("<td/>");
+				$td.append($("<button class='pencil' />").text("Modifica"));
+				$tr.append($td);
+				$td = $("<td/>");
 				$td.append($("<button class='bin' onclick='cancellaMovimento("+data[i].id+")'/>").text("Cancella"));
 				$tr.append($td);
 				$("#listMovimenti").append($tr);
@@ -260,16 +263,6 @@
 			if (mi.length < 2) mi = '0' + mi;
 			if (ss.length < 2) ss = '0' + ss;
 			return [dd,mm,yyyy].join('/');
-		}
-		function elapsedToHHMMSS(elapsed){
-			var d = new Date(elapsed);
-			hh24 = '' + (d.getHours()-1);
-			mi = '' + d.getMinutes();
-			ss = '' + d.getSeconds();
-			if (hh24.length < 2) hh24 = '0' + hh24;
-			if (mi.length < 2) mi = '0' + mi;
-			if (ss.length < 2) ss = '0' + ss;
-			return [hh24,mi,ss].join(':');
 		}
 		function notify(message) {
 		  if (Notification.permission !== "granted")
