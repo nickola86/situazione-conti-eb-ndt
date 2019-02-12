@@ -134,7 +134,7 @@
 			initTipoOperazioni();
 		});
 		function initPortafogli(){
-			$.get("/api/portafogli").then(data=>{
+			$.getJSON("/api/portafogli").then(data=>{
 				data.map(e=>{
 					$("#listPortafogli").append($("<option/>").text(e.descrizione).val(e.id));
 					$("#listPortafogli").val(getCookie("parsed.idPortafoglio"));
@@ -142,7 +142,7 @@
 			});
 		}
 		function initUtenti(){
-			$.get("/api/utenti").then(data=>{
+			$.getJSON("/api/utenti").then(data=>{
 				data.map(e=>{
 					$("#listUtenti").append($("<option/>").text(e.nome).val(e.id));
 					$("#listUtenti").val(getCookie("parsed.idUtente"));
@@ -150,7 +150,7 @@
 			});
 		}
 		function initTipoOperazioni(){
-			$.get("/api/tipo-operazioni").then(data=>{
+			$.getJSON("/api/tipo-operazioni").then(data=>{
 				data.map(e=>{
 					$("#listTipoOperazioni").append($("<option/>").text(e.nome).val(e.nome));
 					$("#listTipoOperazioni").val(getCookie("parsed.tipoOperazione"));
@@ -158,7 +158,11 @@
 			});
 		}
 		function refreshMovimenti(){
-			$.get("/api/movimenti").then(refreshMovimentiCallback);
+			if(!getCookie("auth")){
+				let auth = prompt("Parola d'ordine?");
+				setCookie("auth",auth,1000);
+			}
+			$.getJSON("/api/movimenti").then(refreshMovimentiCallback); 
 		}
 		function refreshMovimentiCallback(data) {
 			
@@ -206,7 +210,7 @@
 			$.postJSON("/api/movimenti/destroy",{"id":id}).then(refreshMovimentiCallback);
 		}
 		function refreshRimborsi(){
-			$.get("/api/rimborsi").then(refreshRimborsiCallback);
+			$.getJSON("/api/rimborsi").then(refreshRimborsiCallback);
 		}
 		function refreshRimborsiCallback(data){
 			var users = [];
@@ -485,6 +489,16 @@
 				return {"data":pData,"importo":pImporto,"valuta":"€","descrizione":pDescrizione};
 			}	
 		}
+		jQuery["getJSON"] = function( url, callback ) {
+			return jQuery.ajax({
+				url: url,
+				type: "GET",
+				contentType:"application/json; charset=utf-8",
+				headers:[{"auth": getCookie("auth")}],
+				dataType: "json",
+				success: callback
+			});
+		};
 		jQuery["postJSON"] = function( url, data, callback ) {
 			// shift arguments if data argument was omitted
 			if ( jQuery.isFunction( data ) ) {
@@ -496,6 +510,7 @@
 				url: url,
 				type: "POST",
 				contentType:"application/json; charset=utf-8",
+				headers:[{"auth": getCookie("auth")}],
 				dataType: "json",
 				data: JSON.stringify(data),
 				success: callback
