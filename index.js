@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session');
 var app = express();
 var bodyParser = require('body-parser');
 var http = require('http').Server(app);
@@ -16,6 +17,14 @@ app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
+
+//use sessions for tracking logins
+app.use(session({
+  secret: 'work hard',
+  resave: true,
+  saveUninitialized: false
+}));
+
 
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
