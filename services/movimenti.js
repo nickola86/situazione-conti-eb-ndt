@@ -52,4 +52,16 @@ Movimenti.prototype.create = async function (mov) {
   return this.all();
 };
 
+Movimenti.prototype.destroy = async function (mov) {
+  if(mov.id) db.get('movimenti').remove(mov).write();  
+  return this.all();
+};
+Movimenti.prototype.update = async function (mov) {
+  if(mov.id) db.get('movimenti')
+	.find({'id':mov.id})
+	.assign(mov)
+	.write();  
+  return this.all();
+};
+
 module.exports = new Movimenti();

@@ -31,6 +31,9 @@ app.get('/api/movimenti', async function(req, res){
 app.post('/api/movimenti/create', async function(req, res){
   res.send(await movimenti.create(req.body));
 });
+app.post('/api/movimenti/destroy', async function(req, res){
+  res.send(await movimenti.destroy(req.body));
+});
 app.get('/api/rimborsi', async function(req, res){
   res.send(await rimborsi.all());
 });

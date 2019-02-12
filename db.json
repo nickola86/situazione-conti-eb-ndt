@@ -395,43 +395,6 @@
         "id": 1,
         "descrizione": "Casa"
       }
-    },
-    {
-      "id": 23,
-      "data": "2019-01-27T23:00:00.000Z",
-      "descrizione": "JustEat - Tutti i Gusti",
-      "importo": 22.5,
-      "tipoOperazione": "Addebito",
-      "idPortafoglio": 1,
-      "idUtente": 1,
-      "utente": {
-        "id": 1,
-        "nome": "Nicola",
-        "alias": "Nic"
-      },
-      "portafoglio": {
-        "id": 1,
-        "descrizione": "Casa"
-      }
-    },
-    {
-      "data": "2019-02-10T23:00:00.000Z",
-      "importo": 11.4,
-      "valuta": "€",
-      "descrizione": "pizzeria grotta azzurra",
-      "idPortafoglio": 1,
-      "idUtente": 1,
-      "id": 24,
-      "tipoOperazione": "Uscita",
-      "utente": {
-        "id": 1,
-        "nome": "Nicola",
-        "alias": "Nic"
-      },
-      "portafoglio": {
-        "id": 1,
-        "descrizione": "Casa"
-      }
     }
   ],
   "rimborsi": [
