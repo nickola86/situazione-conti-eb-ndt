@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Template pulito</title>
+    <style>
+		body{background-color:WhiteSmoke;}
+		.parent {
+			position: relative;
+		}
+		.child {
+			position: absolute;
+			left: 50%;
+			margin-top: 0px;
+			margin-left: -275px;
+			width: 550px;
+			height: 960px;
+			background-color:Gray;
+		}
+		div.nexus{
+			background-color:transparent;
+			background-image:url('nexus.png');
+			background-size:100%;
+		}
+		div.nexus div.container{
+			position: relative;
+			background-color:white;
+			/*height:750px;*/
+			height:800px;
+			margin-top:78px;
+			margin-left:51px;
+			margin-right:49px;
+			box-sizing:border-box;
+		}
+	</style>
+  </head>
+  <body>
+	<div class="parent"></div>
+	<div class="child nexus">
+		<div class="container">
+			<h1>It works!</h1>
+			<h4>Display virtuale dello smartphone, visualizzazione di default su sito desktop.</h4>
+		</div>
+	</div>
+  </body>
+</html>
