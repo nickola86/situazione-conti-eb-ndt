@@ -7,6 +7,10 @@ var port = process.env.PORT || 3000;
 
 var movimenti = require('./services/movimenti');
 var rimborsi = require('./services/rimborsi');
+var portafogli = require('./services/portafogli');
+var utenti = require('./services/utenti');
+var tipoOperazioni = require('./services/tipo-operazioni');
+
 
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -36,6 +40,17 @@ app.post('/api/movimenti/destroy', async function(req, res){
 });
 app.get('/api/rimborsi', async function(req, res){
   res.send(await rimborsi.all());
+});
+
+
+app.get('/api/portafogli', async function(req, res){
+  res.send(await portafogli.all());
+});
+app.get('/api/utenti', async function(req, res){
+  res.send(await utenti.all());
+});
+app.get('/api/tipo-operazioni', async function(req, res){
+  res.send(await tipoOperazioni.all());
 });
 
 http.listen(port, function(){

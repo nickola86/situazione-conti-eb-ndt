@@ -542,5 +542,15 @@
       "nome": "Elena",
       "alias": "Ele"
     }
+  ],
+  "tipo-operazioni": [
+    {
+      "id": 1,
+      "nome": "Uscita"
+    },
+    {
+      "id": 2,
+      "nome": "Addebito"
+    }
   ]
 }
