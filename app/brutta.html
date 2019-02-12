@@ -76,17 +76,19 @@
     </style>
   </head>
   <body>
-	<input type="text" id="transcript" onkeyup="submitManuale(event)" placeholder="es: data 11 febbraio 2019 importo 11 euro 40 centesimi descrizione pizzeria grotta azzurra"/>
+	<div style="text-align:center">
+		<select id="listUtenti"></select> 
+		<select id="listTipoOperazioni"></select>
+		<select id="listPortafogli" style="display:none"></select> 
+	</div>
 	<br/><br/>
-	<select id="listUtenti"></select> 
-	<select id="listTipoOperazioni"></select>
-	<select id="listPortafogli"></select> 
+	<input type="text" id="transcript" onkeyup="submitManuale(event)" placeholder="es: data 11 febbraio 2019 importo 11 euro 40 centesimi descrizione pizzeria grotta azzurra"/>
 	<br/><br/>
 	<div id="displaydataMovimenti" style="display:none">
 		<b>Lista Movimenti</b><br/>
 		<br/>
-		<div id="chart_div" style="width: 560px; height: 300px;display:inline-block;"></div>
-		<div id="piechart" style="width: 400px; height: 300px;display:inline-block;"></div>
+		<div id="chart_div" style="width: 100%; display:inline-block;"></div>
+		<div id="piechart" style="width: 100%; display:inline-block;"></div>
 		<br/>
 		<input type="text" id="filtraMovimenti" onkeyup="filtraMovimenti()" placeholder="Cerca nella tabella dei movimenti..."/>
 		<table>
