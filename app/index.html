@@ -5,9 +5,13 @@
     <title>Lista Movimenti</title>
     <style>
 	  *{padding:0;border:0;margin:0; font-family:sans-serif}
-	  body{padding-bottom:150px;color:#333;}
+	  body{padding-bottom:150px;color:#333;overflow: hidden;overflow-y: scroll;}
 	  div.container{
 		padding:1em;
+	  }
+	  div.scrollable{
+		overflow-x: scroll;
+		overflow-y: hidden;
 	  }
 	  td,th{margin:0px;border-bottom: 1px solid #ccc;padding: 5px 10px 5px 5px;}
 	  th{background-color:#ffffaa}
@@ -36,6 +40,7 @@
 	  .footer{
 		position:fixed;
 		bottom:0;
+		left:0;
 		width:100%;
 		text-align:center;
 		background-image: linear-gradient(
@@ -122,34 +127,38 @@
 			<br/>
 			<b>Lista Movimenti</b><br/><br/>
 			<input type="text" id="filtraMovimenti" onkeyup="filtraMovimenti()" placeholder="Cerca nella tabella dei movimenti..."/>
-			<table>
-				<thead>
-					<th>Data</th>
-					<th>Descrizione</th>
-					<th>Tipo operazione</th>
-					<th>Importo</th>
-					<th>Utente</th>
-					<th colspan="2">Azioni</th>
-				</thead>
-				<tbody id="listMovimenti">
-					<td></td><td></td><td></td><td></td><td></td>
-				</tbody>
-			</table>
+			<div class="scrollable">
+				<table>
+					<thead>
+						<th>Data</th>
+						<th>Descrizione</th>
+						<th>Tipo operazione</th>
+						<th>Importo</th>
+						<th>Utente</th>
+						<th colspan="2">Azioni</th>
+					</thead>
+					<tbody id="listMovimenti">
+						<td></td><td></td><td></td><td></td><td></td>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<br/><br/>
 		<div id="displaydataRimborsi" style="display:none">
 			<b>Lista Rimborsi</b><br/><br/>
-			<table>
-				<thead>
-					<th>Data</th>
-					<th>Descrizione</th>
-					<th>Importo</th>
-					<th>Dare/Avere</th>
-				</thead>
-				<tbody id="listRimborsi">
-					<td></td><td></td><td></td><td></td>
-				</tbody>
-			</table>
+			<div class="scrollable">
+				<table>
+					<thead>
+						<th>Data</th>
+						<th>Descrizione</th>
+						<th>Importo</th>
+						<th>Dare/Avere</th>
+					</thead>
+					<tbody id="listRimborsi">
+						<td></td><td></td><td></td><td></td>
+					</tbody>
+				</table>
+			</div>	
 		</div>
 		<div class="footer">
 			<button type="button" ontouchstart="acqStart()" onmousedown="acqStart()" onmouseup="acqStop()" ontouchend="acqStop()" class="microfono"></button>
