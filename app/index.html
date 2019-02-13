@@ -5,12 +5,20 @@
     <title>Lista Movimenti</title>
     <style>
 	  *{padding:0;border:0;margin:0; font-family:sans-serif}
-	  body{padding:10px;padding-bottom:150px;}
+	  body{padding-bottom:150px;color:#333;}
+	  div.container{
+		padding:1em;
+	  }
 	  td,th{margin:0px;border-bottom: 1px solid #ccc;padding: 5px 10px 5px 5px;}
 	  th{background-color:#ffffaa}
 	  select{margin:10px 0px 30px 0px;}
 	  li{padding:left:30px;list-style-type:none}
 	  button,select{font-size:1.2em;padding:10px 20px 10px 20px;border:1px solid #aaa}
+	  h1.title{
+		background-color:#34495e;color:white;font-weight:bold;font-family:sans-serif
+		margin:0;
+		padding:20px;
+	  }
 	  .pencil{
 		background:url('https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/pen-20.png') no-repeat;
 		background-position:center;
@@ -28,9 +36,27 @@
 	  .footer{
 		position:fixed;
 		bottom:0;
-		background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
 		width:100%;
 		text-align:center;
+		background-image: linear-gradient(
+			to top,
+			hsl(0, 0%, 100%) 0%,
+			hsla(0, 0%, 100%, 0.987) 16.2%,
+			hsla(0, 0%, 100%, 0.951) 30.1%,
+			hsla(0, 0%, 100%, 0.896) 42%,
+			hsla(0, 0%, 100%, 0.825) 52%,
+			hsla(0, 0%, 100%, 0.741) 60.4%,
+			hsla(0, 0%, 100%, 0.648) 67.3%,
+			hsla(0, 0%, 100%, 0.55) 73%,
+			hsla(0, 0%, 100%, 0.45) 77.7%,
+			hsla(0, 0%, 100%, 0.352) 81.6%,
+			hsla(0, 0%, 100%, 0.259) 85%,
+			hsla(0, 0%, 100%, 0.175) 87.9%,
+			hsla(0, 0%, 100%, 0.104) 90.7%,
+			hsla(0, 0%, 100%, 0.049) 93.5%,
+			hsla(0, 0%, 100%, 0.013) 96.5%,
+			hsla(0, 0%, 100%, 0) 100%
+		);
 	  }
 	  .microfono{
 		display:inline-block;
@@ -53,8 +79,6 @@
 	  }
 	  input[type=text]{
 		font-size:1em;
-		font-style:italic;
-		color:#999;
 		border-radius:40px;
 		height:40px;
 		width:100%;
@@ -76,63 +100,69 @@
     </style>
   </head>
   <body>
-	Inserimento manuale:
-	<input type="text" id="transcript" onkeyup="submitManuale(event)" placeholder="es: data 11 febbraio 2019 importo 11 euro 40 centesimi descrizione pizzeria grotta azzurra"/>
-	<div style="text-align:center">
-		<select id="listUtenti" style="width:100%;"></select> 
-		<select id="listTipoOperazioni" style="width:100%; margin-top:0;"></select>
-		<select id="listPortafogli" style="width:100%; margin-top:0;"></select> 
-	</div>
-	<div id="displaydataMovimenti" style="display:none">
-		<b>Lista Movimenti</b><br/>
-		<br/>
-		<div id="chart_div" style="width: 100%; display:inline-block;"></div>
-		<div id="piechart" style="width: 100%; display:inline-block;"></div>
-		<br/>
-		<input type="text" id="filtraMovimenti" onkeyup="filtraMovimenti()" placeholder="Cerca nella tabella dei movimenti..."/>
-		<table>
-			<thead>
-				<th>Data</th>
-				<th>Descrizione</th>
-				<th>Tipo operazione</th>
-				<th>Importo</th>
-				<th>Utente</th>
-				<th colspan="2">Azioni</th>
-			</thead>
-			<tbody id="listMovimenti">
-				<td></td><td></td><td></td><td></td><td></td>
-			</tbody>
-		</table>
-	</div>
-	<br/><br/>
-	<div id="displaydataRimborsi" style="display:none">
-		<b>Lista Rimborsi</b><br/>
-		<table>
-			<thead>
-				<th>Data</th>
-				<th>Descrizione</th>
-				<th>Importo</th>
-				<th>Dare/Avere</th>
-			</thead>
-			<tbody id="listRimborsi">
-				<td></td><td></td><td></td><td></td>
-			</tbody>
-		</table>
-	</div>
-	<div class="footer">
-		<button type="button" ontouchstart="acqStart()" onmousedown="acqStart()" onmouseup="acqStop()" ontouchend="acqStop()" class="microfono"></button>
-	</div>
-	<div id="modificaMovimento" style="background-color: #fafafa; padding: 2em; margin:2em; display:none; position:fixed; top:0px; z-index:10;">
-		<input type="hidden" class="old" value="">
-		Data: <input type="text" class="data" value="">
-		Descrizione: <input type="text" class="descrizione" value="">
-		Importo: <input type="text" class="importo" value="">
-		Tipo Operazione: <input type="text" class="tipoOperazione" value="">
-		<div style="text-align:center" >
+	<h1 class="title">Situazione Conti <span id="portafoglioNome"></span></h1>
+	<div class="container">
+		<b>Inserimento manuale</b><br/><br/>
+		<input type="text" id="transcript" onkeyup="submitManuale(event)" placeholder="es: data 11 febbraio 2019 importo 11 euro 40 centesimi descrizione pizzeria grotta azzurra"/>
+		<br/><br/>
+		<b>Configurazione rapida</b><br/>
+		<div style="text-align:center">
+			<select id="listUtenti" style="width:100%;"></select> 
+			<select id="listTipoOperazioni" style="width:100%; margin-top:0;"></select>
+			<select id="listPortafogli" style="width:100%; margin-top:0;"></select> 
+		</div>
+		<div id="displaydataMovimenti" style="display:none">
+			<b>Visualizzazione grafica</b><br/>
 			<br/>
-			<button type="button" onclick="$('#modificaMovimento').hide()">Chiudi</button>
-			&nbsp;&nbsp;
-			<button type="button" onclick="submitModificaMovimento()">Salva</button>
+			<div id="chart_div" style="width: 100%; display:inline-block;"></div>
+			<div id="piechart" style="width: 100%; display:inline-block;"></div>
+			<br/>
+			<b>Lista Movimenti</b><br/><br/>
+			<input type="text" id="filtraMovimenti" onkeyup="filtraMovimenti()" placeholder="Cerca nella tabella dei movimenti..."/>
+			<table>
+				<thead>
+					<th>Data</th>
+					<th>Descrizione</th>
+					<th>Tipo operazione</th>
+					<th>Importo</th>
+					<th>Utente</th>
+					<th colspan="2">Azioni</th>
+				</thead>
+				<tbody id="listMovimenti">
+					<td></td><td></td><td></td><td></td><td></td>
+				</tbody>
+			</table>
+		</div>
+		<br/><br/>
+		<div id="displaydataRimborsi" style="display:none">
+			<b>Lista Rimborsi</b><br/><br/>
+			<table>
+				<thead>
+					<th>Data</th>
+					<th>Descrizione</th>
+					<th>Importo</th>
+					<th>Dare/Avere</th>
+				</thead>
+				<tbody id="listRimborsi">
+					<td></td><td></td><td></td><td></td>
+				</tbody>
+			</table>
+		</div>
+		<div class="footer">
+			<button type="button" ontouchstart="acqStart()" onmousedown="acqStart()" onmouseup="acqStop()" ontouchend="acqStop()" class="microfono"></button>
+		</div>
+		<div id="modificaMovimento" style="background-color: #fafafa; padding: 2em; margin:2em; display:none; position:fixed; top:0px; z-index:10;">
+			<input type="hidden" class="old" value="">
+			Data: <input type="text" class="data" value="">
+			Descrizione: <input type="text" class="descrizione" value="">
+			Importo: <input type="text" class="importo" value="">
+			Tipo Operazione: <input type="text" class="tipoOperazione" value="">
+			<div style="text-align:center" >
+				<br/>
+				<button type="button" onclick="$('#modificaMovimento').hide()">Chiudi</button>
+				&nbsp;&nbsp;
+				<button type="button" onclick="submitModificaMovimento()">Salva</button>
+			</div>
 		</div>
 	</div>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
@@ -153,6 +183,7 @@
 					$("#listPortafogli").append($("<option/>").text(e.descrizione).val(e.id));
 					$("#listPortafogli").val(getCookie("parsed.idPortafoglio"));
 				});
+				$("#portafoglioNome").text(" : " + data[0].descrizione);
 			});
 		}
 		function initUtenti(){
