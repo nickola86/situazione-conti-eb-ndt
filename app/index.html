@@ -338,7 +338,7 @@
 		
 		if(getCurrentPortafoglio() && isNaN(getCurrentPortafoglio())) parsed.error = "Nessun portafoglio selezionato";
 		if(getCurrentUtente() && isNaN(getCurrentUtente())) parsed.error = "Nessun utente selezionato";
-		if(getCurrentTipoOperazione()) parsed.error = "Nessun tipo operazione selezionato";
+		if(!getCurrentTipoOperazione()) parsed.error = "Nessun tipo operazione selezionato";
 		
 		if(parsed.error){
 			document.getElementById("transcript").value=parsed.error;
