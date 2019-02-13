@@ -40,15 +40,15 @@ Movimenti.prototype.create = async function (mov) {
   mov.id = newId;
   mov.importo = parseFloat(mov.importo);
   if(!mov.tipoOperazione) mov.tipoOperazione = 'Uscita';
-  
-  //Join Utenti
-  mov.idUtente = parseInt(mov.idUtente);
-  mov.utente = db.get('utenti').filter({id:mov.idUtente}).value()[0];  
-  //Join Portafogli
-  mov.idPortafoglio = parseInt(mov.idPortafoglio);
-  mov.portafoglio = db.get('portafogli').filter({id:mov.idPortafoglio}).value()[0];
-  
-  db.get('movimenti').push(mov).write();  
+  if(mov.idUtente && mov.idPortafoglio){
+	  //Join Utenti
+	  mov.idUtente = parseInt(mov.idUtente);
+	  mov.utente = db.get('utenti').filter({id:mov.idUtente}).value()[0];  
+	  //Join Portafogli
+	  mov.idPortafoglio = parseInt(mov.idPortafoglio);
+	  mov.portafoglio = db.get('portafogli').filter({id:mov.idPortafoglio}).value()[0];
+	  db.get('movimenti').push(mov).write();  
+  }
   return this.all();
 };
 
@@ -57,10 +57,12 @@ Movimenti.prototype.destroy = async function (mov) {
   return this.all();
 };
 Movimenti.prototype.update = async function (mov) {
-  if(mov.id) db.get('movimenti')
-	.find({'id':mov.id})
-	.assign(mov)
-	.write();  
+  if(mov.id && mov.idUtente && mov.idPortafoglio){
+	  if(mov.id) db.get('movimenti')
+		.find({'id':mov.id})
+		.assign(mov)
+		.write();  
+  }
   return this.all();
 };
 
