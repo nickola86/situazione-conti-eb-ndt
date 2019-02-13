@@ -395,6 +395,44 @@
         "id": 1,
         "descrizione": "Casa"
       }
+    },
+    {
+      "data": "2019-02-13T18:52:51.122Z",
+      "importo": 10,
+      "valuta": "€",
+      "descrizione": "prova prova",
+      "idPortafoglio": 1,
+      "idUtente": 2,
+      "tipoOperazione": "Uscita",
+      "id": 23,
+      "utente": {
+        "id": 2,
+        "nome": "Elena",
+        "alias": "Ele"
+      },
+      "portafoglio": {
+        "id": 1,
+        "descrizione": "Casa"
+      }
+    },
+    {
+      "data": "2019-02-12T23:00:00.000Z",
+      "importo": 680,
+      "valuta": "€",
+      "descrizione": "affitto febbraio",
+      "idPortafoglio": 1,
+      "idUtente": 2,
+      "tipoOperazione": "Addebito",
+      "id": 24,
+      "utente": {
+        "id": 2,
+        "nome": "Elena",
+        "alias": "Ele"
+      },
+      "portafoglio": {
+        "id": 1,
+        "descrizione": "Casa"
+      }
     }
   ],
   "rimborsi": [
