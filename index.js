@@ -55,6 +55,10 @@ app.post('/api/movimenti/destroy', async function(req, res){
   if(PASSWORD_SICURISSIMISSIMA===req.cookies.auth) res.send(await movimenti.destroy(req.body));
   else res.send({error:"unauthorized"});
 });
+app.post('/api/movimenti/update', async function(req, res){
+  if(PASSWORD_SICURISSIMISSIMA===req.cookies.auth) res.send(await movimenti.update(req.body));
+  else res.send({error:"unauthorized"});
+});
 app.get('/api/rimborsi', async function(req, res){
   if(PASSWORD_SICURISSIMISSIMA===req.cookies.auth) res.send(await rimborsi.all());
   else res.send({error:"unauthorized"});
