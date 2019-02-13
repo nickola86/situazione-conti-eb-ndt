@@ -41,6 +41,10 @@ app.all('*', function(req, res, next) {
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/app/index.html');
 });
+app.get('/download', function(req, res){
+  res.sendFile(__dirname + '/db.json');
+});
+
 app.use(express.static('app'));
 
 app.get('/api/movimenti', async function(req, res){
