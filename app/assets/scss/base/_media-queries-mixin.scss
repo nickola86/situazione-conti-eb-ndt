@@ -1,0 +1,25 @@
+/// Mixin per mettere le media query direttamente nei componenti
+
+@mixin small-only {
+  @media screen and (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+@mixin medium-up {
+    @media screen and (min-width: #{$tablet-width}) {
+        @content;
+    }
+}
+
+@mixin medium-only {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin large-up {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}

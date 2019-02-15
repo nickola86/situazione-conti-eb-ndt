@@ -1,0 +1,23 @@
+/// Modulo allineamento testi
+
+.text-center {
+    text-align: center;
+}
+.text-center-medium-up {
+    @include medium-up {
+        text-align: center;
+    }
+}
+.text-right {
+    text-align: right;
+}
+.text-right-small-only {
+    @include small-only {
+        text-align: right;
+    }
+}
+.text-right-medium-up {
+    @include medium-up {
+        text-align: right;
+    }
+}

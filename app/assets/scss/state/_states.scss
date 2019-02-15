@@ -1,0 +1,12 @@
+/// Gestione dello stato di tutti i componenti
+
+// N.B. la gestione dello stato di tutti i componenti CSS in questo refactor
+// delle pagine categoria e prodotto è fatta all'esterno dei componenti stessi
+// perché:
+// 1. sono convinto sia un approccio che ci porterà alla fine ad avere CSS più
+// leggeri in termini di peso in KB
+// 2. eviteremo il rischio di non essere DRY(https://it.wikipedia.org/wiki/Don%27t_repeat_yourself).
+
+.hide {
+    display: none !important;
+}
