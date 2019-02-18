@@ -1,0 +1,32 @@
+/// Impostazioni di base per il carrello
+
+// Setup iniziale
+$default-box-sizing: border-box;
+$default-fonts: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+$default-font-weight: normal;
+$website-width: 1045px;
+
+// Variabili
+$site-palette: (
+  primary: #009698, // PANTONE 17-5126 TPX (Viridian Green)
+  secondary: #798f9a,
+  success: #88B04B, // PANTONE 15-0343 TCX (Greenery)
+  warning: #F45520, // PANTONE 17-1361 TCX (Scarlet Ibis)
+  alert: #C83586, // PANTONE 18-1659 TCX (Goji Berry) - #B91228
+);
+$global-weight-normal: normal;
+$global-weight-bold: bold;
+$black: #000000;
+$blue: #004A98;
+$global-radius: 3px;
+$global-weight-normal: normal;
+$light-gray: #e6e6e6;
+$medium-gray: #cacaca;
+$dark-gray: #8a8a8a;
+$white: #ffffff;
+$medium-white: #f6f6f6;
+
+// Breakpoint
+$mobile-width: 639px;
+$tablet-width: 640px;
+$desktop-width: 1024px;

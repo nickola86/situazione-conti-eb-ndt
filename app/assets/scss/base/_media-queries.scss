@@ -1,0 +1,27 @@
+/// Qui sono definite le media query da usare nel markup HTML
+
+@media screen and (max-width: $mobile-width) {
+    .show-for-medium {
+        display: none !important;
+    }
+}
+@media screen and (max-width: 1023px) {
+    .show-for-large {
+        display: none !important;
+    }
+}
+@media screen and (min-width: $tablet-width) {
+    .hide-for-medium {
+        display: none !important;
+    }
+}
+@media (min-width: $tablet-width) and (max-width: 1023px) {
+    .hide-for-medium-only {
+        display: none !important;
+    }
+}
+@media (min-width: $desktop-width) {
+    .hide-for-large-up {
+        display: none !important;
+    }
+}

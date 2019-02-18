@@ -1,0 +1,32 @@
+/// Utility generiche che non rientrano nelle altre categorie
+
+// Margini
+.no-mb {
+    margin-bottom: 0;
+}
+
+// Padding
+.pt-05r {
+    padding-top: 0.5rem;
+}
+
+// Colori
+.color-primary {
+    color: map-get($site-palette, primary);
+}
+.color-alert {
+    color: map-get($site-palette, alert);
+}
+
+// Display type
+.d-f {
+    display: flex;
+}
+.jc-sb {
+    justify-content: space-between;
+}
+
+// Testo
+.text-uppercase {
+    text-transform: uppercase;
+}

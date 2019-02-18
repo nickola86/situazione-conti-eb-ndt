@@ -1,0 +1,24 @@
+/// Lista di cose
+
+// .list è un componente base vuoto perché mi serve solo per dare un nome al
+// contenitore di una lista di componenti singoli. Nulla toglie che non possa
+// essere esteso, per esempio, per permettere lo scroll orizzontale di più
+// elementi da mobile (come nel caso di "prodotti correlati" e
+// "prodotti visti di recente").
+
+.list {
+
+    &--scrollable {
+        margin-bottom: 3rem;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        overflow-x: auto; // scroll
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+
+        // &::-webkit-scrollbar {
+        //     display: none;
+        // }
+    }
+}

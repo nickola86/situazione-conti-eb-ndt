@@ -1,0 +1,10 @@
+/// Definizione del font di default per la pagina
+
+body {
+    font-family: $default-fonts;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin-top: 0;
+    font-weight: $default-font-weight;
+}
